@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %></title>
+    <link rel="stylesheet" href="styles/createUser.css">
+    <link rel="stylesheet" href="styles/default_navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <section>
+        <div class="signin_form">
+            <div class="profile_photo"></div>
+            <form action="/signin" method="post" enctype="multipart/form-data">
+                <div class="pfofile_file input">
+                    <input type="file" name="profile_photo" onchange="previewProfile(event)" accept="image/*" required>
+                </div>
+                <div class="first_name input">
+                    <input type="text" name="first_name" required>
+                    <label>first_name</label>
+                </div>
+                <div class="last_name input">
+                    <input type="text" name="last_name" required>
+                    <label>last_name</label>
+                </div>
+                <div class="male input">
+                    <input type="radio" name="gender" value="male" required>
+                    <label>male</label>
+                </div>
+                <div class="female input">
+                    <input type="radio" name="gender" value="female" required>
+                    <label>female</label>
+                </div>
+                <div class="gmail input">
+                    <input type="email" name="gmail" required>
+                    <label>gmail</label>
+                </div>
+                <div class="phone_no input">
+                    <input type="text" name="phone_no" required>
+                    <label>phone_no</label>
+                </div>
+                <div class="city input">
+                    <input type="text" name="city" required>
+                    <label>city</label>
+                </div>
+                <div class="postal input">
+                    <input type="text" name="postal" required>
+                    <label>postal</label>
+                </div>
+                <div class="state input">
+                    <input type="text" name="state" required>
+                    <label>state</label>
+                </div>
+                <div class="about input">
+                    <input type="text" name="about">
+                    <label>about</label>
+                </div>
+                <div class="password input">
+                    <input type="password" name="password" required>
+                    <label>password</label>
+                </div>
+                    <button type="submit" id="submit">singin</button>
+                <p>have an account <a href="/login">login</a></p>
+            </form>
+        </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script>
+        const hambar = document.querySelector(".nav i")
+        const navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+        const profile_photo = document.querySelector("section .signin_form .profile_photo")
+        const input_file = document.querySelector("section .signin_form form .pfofile_file input")
+
+        const previewProfile = (event) => {
+            const _file = URL.createObjectURL(event.target.files[0])
+            profile_photo.setAttribute("style", `background-image: url(${_file});`)
+        }
+    </script>
+</body>

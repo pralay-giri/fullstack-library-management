@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    word-wrap: balance;
+}
+
+html {
+    scroll-behavior: smooth;
+    color-scheme: light dark;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #121d31;
+}
+
+::selection {
+    background-color: rgb(7, 65, 73);
+}
+
+::-webkit-scrollbar {
+    width: .7rem;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+        45deg,
+        #12c2e9,
+        #c471ed,
+        #f64f59);
+    border-radius: 10px;
+}
+
+#home {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: url("../media/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#home #title {
+    font-weight: 600;
+    font-size: 4rem;
+    text-transform: uppercase;
+    transition: letter-spacing .06s;
+    word-wrap: balance;
+    text-align: center;
+}
+
+#about {
+    min-height: 100vh;
+}
+
+#about .wellcome-note {
+    position: relative;
+    isolation: isolate;
+    margin-block: 5%;
+    padding: 5rem min(20vw, 10%);
+    z-index: 1;
+}
+
+#about .wellcome-note::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background-image: linear-gradient(45deg,
+            #12c2e9,
+            #c471ed,
+            #f64f59);
+    transform: skewY(-5deg);
+    box-shadow: 0 20px 15px rgba(0, 0, 0, .5);
+    z-index: -1;
+}
+
+#about .wellcome-note>h1 {
+    word-wrap: balance;
+    text-align: left;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+
+}
+
+#about .wellcome-note>p {
+    word-wrap: balance;
+    word-break: normal;
+    letter-spacing: 1px;
+}
+
+#about .key {
+    position: relative;
+    isolation: isolate;
+    margin-block: 5%;
+    padding: 5rem min(20vw, 10%);
+}
+
+#about .key>h2 {
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding-block: 1rem;
+    word-wrap: balance;
+}
+
+#about .key>p {
+    letter-spacing: 1px;
+}
+
+
+
+#about :is(#catalog, #fines):before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right,
+            #fdc830,
+            #f37335);
+    z-index: -1;
+    transform: skewY(5deg);
+    box-shadow: 0 20px 15px rgba(0, 0, 0, .5);
+}
+
+#about :is(#accounts, #reservation):before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to right,
+            #00f260,
+            #0575e6);
+    z-index: -1;
+    transform: skewY(-5deg);
+    box-shadow: 0 20px 15px rgba(0, 0, 0, .5);
+
+}
+
+#about :is(#management, #commit):before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(45deg,
+            #05e6e2,
+            #d86fdf,
+            #f20075);
+    z-index: -1;
+    transform: skewY(5deg);
+    box-shadow: 0 20px 15px rgba(0, 0, 0, .5);
+}
+
+#about #commit {
+    position: relative;
+    isolation: isolate;
+    margin-block: 5%;
+    padding: 5rem min(20vw, 10%);
+    margin-bottom: 10%;
+}
+
+#about #commit::before {
+    transform: skewY(-5deg);
+}
+
+@media (max-width: 426px) {
+    .nav #logo {
+        font-size: x-large;
+    }
+
+    .nav i {
+        display: block;
+        z-index: 9999;
+    }
+
+    .nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: absolute;
+        top: -1rem;
+        right: 0;
+        left: 50%;
+        height: 100vh;
+        z-index: 1;
+        padding-top: min(40%, 20vh);
+        background-color: rgba(17, 16, 16, .5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .active ul {
+        display: flex;
+    }
+
+    #home #title {
+        font-size: 3rem;
+    }
+}

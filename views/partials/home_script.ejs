@@ -1,0 +1,13 @@
+<script>
+    let title = document.querySelector("#home #title")
+    let home = document.querySelector("#home")
+    window.addEventListener("scroll", () => {
+        let y = window.scrollY
+        title.setAttribute('style', `letter-spacing: ${y * 0.1}px; -webkit-filter: blur(${y * 0.007}px)`)
+    })
+    let hambar = document.querySelector(".nav i")
+    let navbar = document.querySelector(".nav") 
+    hambar.addEventListener("click", () => {
+        navbar.classList.toggle("active")
+    })
+</script>

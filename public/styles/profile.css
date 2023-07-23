@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    word-wrap: balance;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(45deg, #05e6e2,
+            #d86fdf,
+            #f20075);
+    background-size: 400%;
+    animation: bg-animation 30s infinite alternate;
+}
+
+@keyframes bg-animation {
+    0% {
+        background-position: left;
+    }
+
+    100% {
+        background-position: right;
+    }
+}
+
+
+::selection {
+    background-color: rgb(7, 65, 73);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: .7rem;
+    background-color: #121d31;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(45deg,
+            #12c2e9,
+            #c471ed,
+            #f64f59);
+    border-radius: 10px;
+}
+
+section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+section .profile {
+    position: relative;
+    margin-inline: min(7%, 90vw);
+    margin-block: min(10%, 90vh);
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.56);
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+section .profile .profile-photo {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    background-image: url("../media/profile.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+section .profile .profile-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section .profile>* {
+    text-align: center;
+    margin-bottom: .5rem;
+}
+
+section .profile #edit_profile {
+    background-color: #12c2e9;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+section .profile #log_out {
+    background-color: #e91268;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+section .profile #edit_profile:is(:focus, :hover) {
+    outline: none;
+    background-color: #12c2e9c8;
+}
+
+section .profile #log_out:is(:focus, :hover) {
+    outline: none;
+    background-color: #e91268c8;
+}
+
+section .profile #edit_profile a,
+section .profile #log_out a {
+    color: black;
+    text-decoration: none;
+}
+
+section .profile .address {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    text-transform: capitalize;
+}
+
+section .profile .address *::after {
+    content: "|";
+    padding: 1px;
+}
+
+section .profile .address :last-child:after {
+    content: "";
+}
+
+@media (max-width: 426px) {
+    .nav #logo {
+        font-size: x-large;
+    }
+
+    .nav i {
+        display: block;
+        z-index: 9999;
+    }
+
+    .nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: absolute;
+        top: -1rem;
+        right: 0;
+        left: 50%;
+        height: 100vh;
+        z-index: 1;
+        padding-top: min(40%, 20vh);
+        background-color: rgba(17, 16, 16, .5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    .active ul {
+        display: flex;
+    }
+
+    section .profile .profile-photo {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    section .profile .profile-photo img {
+        width: 3rem;
+        height: 3rem;
+    }
+}

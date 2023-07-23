@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %></title>
+    <link rel="stylesheet" href="styles/default_navbar.css">
+    <link rel="stylesheet" href="styles/cart.css"> 
+    <link rel="stylesheet" href="styles/footer.css">
+    <style>
+        footer{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <!-- all the books come form db and add with the help of ejs for loop -->
+    <section class="book_section">
+        <div class="container">
+            <% if (allbBooks.length > 0) {%>
+                <% allbBooks.forEach(book => { %>
+                    <div class="books">
+                        <div class="book">
+                            <div class="image"><img src="/books_photo/<%= book.photo %>" alt=""></div>
+                            <div class="details">
+                                <p class="book_name"><%= book.name %></p>
+                                <p class="author_name"><%= book.author %></p>
+                            </div>
+                        </div>
+                        <div class="book-info">
+                            <h1>Book details</h1>
+                            <div class="info">
+                                <div class="name">
+                                    <label>name</label>
+                                    <p><%= book.name %></p>
+                                </div>
+                                <div class="author">
+                                    <label>author</label>
+                                    <p><%= book.author %></p>
+                                </div>
+                                <div class="publish_time">
+                                    <label>published on</label>
+                                    <p><%= book.publish_time %></p>
+                                </div>
+                                <div class="rent_time">
+                                    <label>max rent time</label>
+                                    <p>10 day</p>
+                                </div>
+                            </div>
+                            <div class="cart_btns">
+                                <button onclick="give_back(this)">give back</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else {%>
+                <p class="empty">You did't have any book yet <a href="/books">add books</a></p>
+            <% } %>
+        </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script src="./scripts/cart.js"></script>
+    <script>
+        const hambar = document.querySelector(".nav i")
+        const navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        });
+    </script>
+</body>

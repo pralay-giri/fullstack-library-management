@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %></title>
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/default_navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <section>
+        <div class="profile">
+            <div class="profile-photo">
+                <img src="<%= profile_photo %>">
+            </div>
+            <p class="name"><%= name %></p>
+            <p class="role"><%= role %></p>
+            <p class="about"><%= about %></p>
+            <p class="gmail"><%= gmail %></p>
+            <p class="phone_no"><%= phone_no %></p>
+            <div class="address">
+                <p id="city"><%= city %></p>
+                <p id="state"><%= state %></p>
+                <p id="postal_code"><%= postal_code %></p>
+            </div>
+            <!-- <div id="edit_profile">
+                <a href="/edit_profile">edit profile <i class="fa-regular fa-pen-to-square"></i></a>
+            </div> -->
+            <div id="log_out">
+                <a href="/log_out">log out <i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script>
+        const hambar = document.querySelector(".nav i")
+        const navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+        
+        const quentity = document.querySelector(".container .book-info .quentity p span")
+        const select = document.querySelector(".container .book-info .quentity select")
+
+        select.addEventListener("change", ()=>{
+            quentity.innerHTML = select.value
+        })
+
+    </script>
+</body>

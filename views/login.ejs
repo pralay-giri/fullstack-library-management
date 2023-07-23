@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %></title>
+    <link rel="stylesheet" href="styles/default_navbar.css">
+    <link rel="stylesheet" href="styles/createUser.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <style>
+        footer{
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <section>
+        <div class="login_form">
+            <form action="/login" method="post">
+                <div class="logo"></div>
+                <div class="gmail input">
+                    <input type="email" name="gmail" required>
+                    <label>gmail</label>
+                </div>
+                <div class="password input">
+                    <input type="password" name="password" required>
+                    <label>password</label>
+                </div>
+                <button type="submit" id="submit">login</button>
+                <p>did't have an acount <a href="/signin">signin</a></p>
+            </form>
+        </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script>
+        const hambar = document.querySelector(".nav i")
+        const navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+    </script>
+</body>

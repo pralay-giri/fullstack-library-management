@@ -1,0 +1,58 @@
+.nav {
+    position: relative;
+    background-color: #121d31;
+    padding: 1rem;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+}
+
+.nav h1 {
+    margin-right: auto;
+    color: white;
+}
+
+.nav i {
+    display: none;
+    position: absolute;
+    top: 35%;
+    right: 5%;
+    font-size: 20px;
+}
+
+.nav i:hover {
+    color: #20b2aa;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav ul #logo {
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.nav ul li {
+    list-style: none;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav ul li a img {
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.nav ul li a:hover,
+.nav #logo span {
+    transition: color .4s;
+    color: lightseagreen;
+}

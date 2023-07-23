@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %></title>
+    <link rel="stylesheet" href="styles/all_books.css">
+    <link rel="stylesheet" href="styles/footer.css">
+</head>
+
+<body>
+    <div class="nav">
+        <h1 id="logo">Seacom<span>.</span></h1>
+        <ul>
+            <li>
+                <form action="/find_book" method="get">
+                    <input type="text" required name="book_name" placeholder="search..">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass search_icon"></i></button>
+                </form>
+            </li>
+            <li>
+                <a href="/#home">Home</a>
+            </li>
+            <li>
+                <a href="/books">Books</a>
+            </li>
+            <% if (user === "ADMIN") {%>
+                <li>
+                    <a href="/add_books">AddBooks</a>
+                </li>
+            <% }else{ %>
+                <li>
+                    <a href="/cart">Cart</a>
+                </li>
+            <% } %>
+            <li>
+                <a href="/profile">
+                    <img src="<%= profile_photo %>" alt="" width="15px">
+                </a>
+            </li>
+        </ul>
+        <i class="fa-solid fa-bars hambar"></i>
+    </div>
+    <section class="book_section">
+        <div class="container">
+            <% if (books.length > 0){ %>
+                <% let count = 1%>
+                <% books.forEach(book => { %>
+                    <div class="book book_<%= count %>">
+                        <div class="image">
+                            <img src="/books_photo/<%= book.photo %>" alt="photo">  
+                        </div>
+                        <div class="details">
+                            <p class="book_name"><%= book.name %></p>
+                            <p class="author_name"><%= book.author %></p>
+                        </div>
+                        <% if (user == "ADMIN") {%>
+                            <button class="btns delete" onclick="deleteBook(this)">delete</button>
+                        <% } else{%>
+                            <button class="btns cart" onclick="addToCart(this)">add to cart</button>
+                            <button class="btns details" onclick="showDetails(this)">details</button>
+                        <% } %>
+                    </div>
+                    <% count++ %>
+                <% }) %>
+            <% } else{ %>
+                <h1>Books Are Not Avalable</h1>
+            <% } %>
+        </div>
+    </section>
+    <%- include('./partials/footer') %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script src="./scripts/allbooks.js"></script>
+    <script>
+        let hambar = document.querySelector(".nav .hambar")
+        let navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+    </script>
+</body>

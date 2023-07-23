@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <title>Seacom Libary | <%= title %>
+    </title>
+    <link rel="stylesheet" href="styles/default_navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/addBook.css">
+    <style>
+        footer {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <section>
+        <div class="addbook_form signin_form" style="color: black;">
+            <div class="logo">
+                <img src="./media/PG_3.png">
+            </div>
+            <form action="/add_books" method="post" enctype="multipart/form-data">
+                <div class="book_photo">    
+                    <input type="file" name="photo" onchange="previewBook(event)" accept="image/*" required>
+                </div>
+                <div class="book_name input">
+                    <input type="text" name="name" required>
+                    <label>name</label>
+                </div>
+                <div class="author input">
+                    <input type="text" name="author" required>
+                    <label>author</label>
+                </div>
+                <div class="publish_time input">
+                    <input type="date" name="publish_time" required>
+                </div>
+                <div class="stock input">
+                    <input type="number" name="stock" required>
+                    <label>stock</label>
+                </div>
+                <button type="submit" id="submit">add</button>
+            </form>
+        </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script>
+        const hambar = document.querySelector(".nav i")
+        const navbar = document.querySelector(".nav")
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+
+        const book_img = document.querySelector("section .logo img");
+        const previewBook = (event) => {
+            const _file = URL.createObjectURL(event.target.files[0])
+            book_img.setAttribute("src", `${_file}`)
+        }
+    </script>
+</body>
+
+</html>

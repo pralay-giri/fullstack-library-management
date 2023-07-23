@@ -1,0 +1,35 @@
+footer {
+    color: white;
+    position: relative;
+    text-align: center;
+    background-color: #121d31;
+    bottom: 0;
+    left: 0;
+    padding-block: 2rem;
+}
+
+footer>* {
+    padding: 10px;
+}
+
+footer ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+footer ul li {
+    list-style: none;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+}
+
+footer ul li a:hover {
+    color: rgb(7, 65, 73);
+}

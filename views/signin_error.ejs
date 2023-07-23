@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/default_navbar.css">
+    <link rel="stylesheet" href="./styles/footer.css">
+    <title>Seacom Libary | <%= title %></title>
+</head>
+
+<body>
+    <%- include("./partials/"+ navigation_bar, {profile_photo}) %>
+    <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <ul>
+            <% error_msg.forEach(msg=>{ %>
+                <li><%= msg %></li>
+            <% }) %>
+        </ul>
+    </section>
+    <%- include("./partials/footer") %>  
+    <script src="https://kit.fontawesome.com/c485021909.js" crossorigin="anonymous"></script>
+    <script>
+        let hambar = document.querySelector(".nav i")
+        let navbar = document.querySelector(".nav") 
+        hambar.addEventListener("click", () => {
+            navbar.classList.toggle("active")
+        })
+    </script>
+</body>
+
+</html>
